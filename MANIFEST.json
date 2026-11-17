@@ -1,0 +1,34 @@
+{
+ "exported": "2026-10-17 15:51:57",
+ "repository": "/home/ai/qys/projects/dreamer4-main",
+ "files": {
+  "data/real_track.png": {
+   "source": "/home/ai/qys/projects/dreamer4-main/f1tenth_gym_gazebo/maps/real_track.png",
+   "sha256": "1a423c2a5a69bab0101a606eedc190befe7bd31ef2cc48b1bc186abf9d8d6e55"
+  },
+  "data/real_track.yaml": {
+   "source": "/home/ai/qys/projects/dreamer4-main/f1tenth_gym_gazebo/maps/real_track.yaml",
+   "sha256": "a40a3746441a2ec0ce5f973b2b65517ecf05fca63f72e733d07a9644f007afa9"
+  },
+  "data/real_track_reference.npz": {
+   "source": "mixed_quality_f1tenth.env.load_tracks([\"real_track\"])",
+   "sha256": "3e1f8812cdd7e4d0632d7612c5406f04433d1450c96904d9f8b1d694a64c51ca"
+  },
+  "checkpoints/ppo_expert.npz": {
+   "source": "logs/f1tenth_ppo/run2/ckpts/ppo_final.zip",
+   "sha256": "cff024aa4371952911c31ee9b66b1a12c84ad38cd50fda38ad833c018ef6c1ee"
+  },
+  "checkpoints/safer_offline.pt": {
+   "source": "logs/f1_wm_ckpts_v2/step_0135000.pt",
+   "sha256": "2e6b90fea26f7849963af63ad6bf700267b4e0b046b0a573105bcb1f2e925a01"
+  },
+  "videos/safer_sim_real_track_ccw.mp4": {
+   "source": "plots/videos/f1tenth_safer_real_track_ccw.mp4",
+   "sha256": "24aae6501426c9762bd275d88a7bc109d5dd9544cadaacd65d6bffa81a8e819d"
+  },
+  "videos/safer_sim_real_track_cw.mp4": {
+   "source": "plots/videos/f1tenth_safer_real_track_cw.mp4",
+   "sha256": "7564ff1dfdb061259677e37ca511178a3fcb29294b8891feb0da3f5a12c88982"
+  }
+ }
+}

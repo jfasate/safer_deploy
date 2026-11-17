@@ -1,0 +1,40 @@
+# Settings of safer_deploy/node.py and check_setup.py for the real car. Edit the topics to your car's; everything else
+# should stay as it is unless we agree otherwise. (config/gazebo.yaml: the same for the F1TENTH Gazebo simulation.)
+
+track: real_track                    # data/real_track_reference.npz, data/real_track.png/.yaml
+direction: auto                      # driving direction along the reference trajectory: auto (from the car's heading
+                                     # at the start), 1 or -1 (see README, "Driving direction")
+
+topics:
+  scan: /scan                        # sensor_msgs/LaserScan, 1080 beams over -2.35..2.35 rad
+  odom: /odom                        # nav_msgs/Odometry: twist.linear.x = forward speed [m/s] (wheel odometry)
+  pose: /pf/pose/odom                # the localisation's pose in the map frame of data/real_track.yaml
+  pose_type: odometry                # odometry (nav_msgs/Odometry) | pose (geometry_msgs/PoseStamped) |
+                                     # pose_cov (geometry_msgs/PoseWithCovarianceStamped)
+  yaw_rate: odom                     # where the yaw rate comes from: odom (twist.angular.z of the odom topic) | imu
+  imu: /imu                          # sensor_msgs/Imu (used when yaw_rate: imu): angular_velocity.z [rad/s]
+  drive: /drive                      # ackermann_msgs/AckermannDriveStamped, published to your car's drive input
+  record_extra: [/tf, /tf_static]    # also recorded in the rosbag
+
+human:                               # what the car actually executes, and the safety driver's takeovers
+  executed: /ackermann_cmd            # AckermannDriveStamped: the drive mux's output, the command the car executes ('' if none)
+  teleop: /teleop                     # AckermannDriveStamped: the joystick's driving commands ('' if none)
+  joy: /joy                           # sensor_msgs/Joy: the joystick's buttons and axes ('' if none)
+  record: [/commands/motor/speed, /commands/servo/position, /sensors/core] # also recorded in the rosbag (VESC commands and state)
+
+control:
+  period: 0.1                        # [s] one decision per 0.1 s, as in training
+  use_sim_time: false                # true in Gazebo
+  speed_cap: 1.5                     # [m/s] the command never exceeds this (the reference speed is 1.0 m/s)
+  max_input_age: 0.3                 # [s] speed 0 when the scan, the odometry or the pose is older than this
+  warmup_decisions: 3                # SAFER: planner decisions on a dummy input before the run (GPU warm-up)
+
+safer:
+  checkpoint: checkpoints/safer_offline.pt     # test 2: checkpoints/safer_finetuned.pt (we will send it)
+  risk_weight: 50.0
+  device: cuda:0
+
+ppo:
+  checkpoint: checkpoints/ppo_expert.npz
+
+lidar_mount_x: 0.275                 # [m] the LiDAR's position ahead of base_link (check_setup.py's map check)

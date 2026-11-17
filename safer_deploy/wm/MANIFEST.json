@@ -1,0 +1,9 @@
+{
+ "source": "dreamer4-main/dreamer4 (2026-10-17)",
+ "sha256": {
+  "chunk_world_model.py": "aaab05db9d424c1a961347f5494f028b9ed7ccd2454bb0820785587ae735f75c",
+  "f1_reward.py": "cf0d154cafce34465730476fdf5db40aea2ddf7bf2357464d71961f9766fe75f",
+  "model.py": "83821cd03e54571f088daf76eaea3da621bb493c517491a0aa75d9e08076a4c8",
+  "risk_head.py": "23b41a6d649d1b8f51cc84ef0cfbbab762ffb7a0a0dc981a1d23d90c46eadac7"
+ }
+}

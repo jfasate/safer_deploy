@@ -1,0 +1,2 @@
+run_folder,controller,direction,start_place,duration_s,laps,interventions,wall_contacts,speed_cap,floor_and_light,battery,notes
+example: 20261020_141500_ppo_dir+1_a,ppo,+1,start line,120,1.2,0,0,1.5,dry indoor / normal,full,smooth; slight wobble on the long straight
